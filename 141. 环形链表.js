@@ -1,5 +1,3 @@
-import { initList } from './21. 0.链表实现.js'
-
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -49,6 +47,9 @@ var hasCycle = function (head) {
   return true
 };
 
+
+import { initList } from './21. 0.链表实现.js'
+
 let list = initList()
 list.push(222)
 // list.push(333)
@@ -58,4 +59,3 @@ list.push(222)
 // console.log(new Date().getTime(), list)
 let res = hasCycle(list.head)
 console.log('----', res)
-// console.log(new Date().getTime(), list)

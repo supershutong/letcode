@@ -1,0 +1,7 @@
+{
+  "type":"module",
+  "dependencies": {
+    "@babel/node": "^7.10.3",
+    "@babel/preset-env": "^7.10.3"
+  }
+}
