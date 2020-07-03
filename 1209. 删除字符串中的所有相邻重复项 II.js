@@ -4,14 +4,14 @@
  * @return {string}
  */
 var removeDuplicates = function (s, k) {
-  let stack = [], tail
+  let stack = [], top
   for (let i = 0, len = s.length; i < len; i++) {
-    tail = stack.pop()
-    if (!tail || tail[0] !== s[i]) {
-      stack.push(tail)
+    top = stack.pop()
+    if (!top || top[0] !== s[i]) {
+      stack.push(top)
       stack.push(s[i])
-    } else if (tail.length < k - 1) {
-      stack.push(tail + s[i])
+    } else if (top.length < k - 1) {
+      stack.push(top + s[i])
     }
   }
   return stack.join('')
