@@ -3,6 +3,7 @@
  * @return {character}
  */
 var firstUniqChar = function (s) {
+  if (!s) return " "
   let map = new Map()
   for (let str of s) {
     if (map.get(str) !== undefined) {
@@ -17,7 +18,6 @@ var firstUniqChar = function (s) {
       return k
     }
   }
-  return ' '
 };
 
 var s = "abaaccdeff"
