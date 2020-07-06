@@ -44,4 +44,22 @@ var preorderTraversal = function (root) {
   return result
 };
 
+// *** 迭代通用方法 *** 参见94中序遍历、145后序遍历
+var preorderTraversal = function (root) {
+  let result = [], stack = [], cur
+  if (root) stack.push(root)
+  while (stack.length > 0) {
+    cur = stack.pop()
+    if (cur !== null) {
+      if (cur.right) stack.push(cur.right)
+      if (cur.left) stack.push(cur.left)
+      stack.push(cur)
+      stack.push(null)
+    } else {
+      result.push(stack.pop().val)
+    }
+  }
+  return result
+};
+
 var root = [1, null, 2, 3]
