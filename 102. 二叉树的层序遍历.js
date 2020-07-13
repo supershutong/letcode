@@ -53,7 +53,7 @@ var levelOrder = function (root) {
   let result = []
   function dfs(cur, level) {
     if (cur != null) {
-      !result[level] && (result[level] = [])
+      result[level] = result[level] || []
       result[level].push(cur.val)
       cur.left && dfs(cur.left, level + 1)
       cur.right && dfs(cur.right, level + 1)
