@@ -8,7 +8,7 @@ function decodeString(s) {
   let res = ''
   let num = 0
   for (let c of s) {
-    if (/\d/.test(c)) {
+    if (!isNaN(c)) {
       num = num * 10 + +c // 算出倍数
     } else if (c === '[') {
       numStack.push(num) // 倍数num进入栈等待
@@ -16,13 +16,12 @@ function decodeString(s) {
       res = ''
       num = 0
     } else if (c === ']') {
-      let repeatTimes = numStack.pop() // 获取拷贝次数
-      res = strStack.pop() + res.repeat(repeatTimes)
+      let repeatTimes = numStack.splice(-1) // 获取拷贝次数
+      res = strStack.splice(-1) + res.repeat(repeatTimes)
     } else {
       res += c
     }
   }
-  console.log(res)
   return res
 }
 // 测试用例
