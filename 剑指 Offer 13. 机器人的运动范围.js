@@ -16,23 +16,27 @@
  */
 var movingCount = function (m, n, k) {
   let total = 0
-  let obj = {}
-  function runing(i, j) {
+  let path = new Map()
+  function running(i, j) {
     //边界直接返回
     if (i < 0 || j < 0 || i >= m || j >= n) return
-    let sum = (i + '' + j).split('').reduce((a, b) => +a + +b)
+    let sum = ('' + i + j).split('').reduce((prev, cur) => +prev + +cur)
     let pos = JSON.stringify([i, j])
-    if (!obj[pos] && sum <= k) {
-      // 当该点还没走过 且 不大于k 时 继续执行
+    // 当该点还没走过 且 不大于k 时 继续执行
+    if (!path.get(pos) && sum <= k) {
+      path.set(pos, true) // 标识该点已经走过, 下次不进
       total++
-      obj[pos] = true // 标识该点已经走过, 下次不进
       // 当前的继续 上下左右 走
-      runing(i + 1, j)
-      runing(i, j + 1)
-      runing(i - 1, j)
-      runing(i, j - 1)
+      running(i - 1, j)
+      running(i + 1, j)
+      running(i, j - 1)
+      running(i, j + 1)
     }
   }
-  runing(0, 0)
+  running(0, 0)
   return total
 }
+
+// 测试用例
+let count = movingCount(20, 20, 18)
+console.log(count)
