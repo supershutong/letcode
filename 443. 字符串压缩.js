@@ -13,7 +13,7 @@ var compressString = function (str) {
       time = 1
     }
   }
-  return res
+  return res.length >= str.length ? str : res
 }
 
 let str = 'aabcccccaaa'
